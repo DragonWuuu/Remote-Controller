@@ -1,11 +1,17 @@
-<script setup></script>
+<script setup>
+import { useDark, useToggle } from '@vueuse/core'
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <h1>hello</h1>
+  <button @click="toggleDark()">
+    <i inline-block align-middle i="dark:carbon-moon carbon-sun" />
+
+    <span class="ml-2">{{ isDark ? 'Dark' : 'Light' }}</span>
+  </button>
+
 </template>
 
 <style scoped></style>
