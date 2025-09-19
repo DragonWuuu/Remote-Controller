@@ -6,9 +6,16 @@ import App from './App.vue'
 import router from './router'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
+// 添加 Pinia 导入
+import { createPinia } from 'pinia'
 
 const app = createApp(App)
 
+// 创建 Pinia 实例
+const pinia = createPinia()
+
+// 先使用 Pinia，再使用其他依赖
+app.use(pinia)
 app.use(router)
 app.use(ElementPlus, {
   locale: zhCn,

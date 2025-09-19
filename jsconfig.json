@@ -2,7 +2,13 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
+    "allowJs": true,
+    "checkJs": false
   },
   "exclude": ["node_modules", "dist"]
 }
