@@ -9,6 +9,7 @@ const http = new HttpClient()
  */
 export type ApiResponse<T = any> = Promise<CustomResponse<T>>
 
+
 /**
  * 基础API服务类
  */
@@ -28,6 +29,33 @@ class BaseApiService {
       ...config
     }
   }
+}
+
+/**
+ * 板子API服务
+ */
+export class BoardApiService extends BaseApiService {
+  /**
+   * 开启灯
+   */
+  turnOnLight(config?: RequestConfig): ApiResponse<boolean> {
+    return this.http.post('/api/board/light/on', {}, this.extendConfig(config))
+  }
+  /**
+   * 关闭灯
+   */
+  turnOffLight(config?: RequestConfig): ApiResponse<boolean> {
+    return this.http.post('/api/board/light/off', {}, this.extendConfig(config))
+  }
+  /**
+   * 设置屏幕显示内容
+   */
+  setScreenContent(data: {
+    content: string
+  }, config?: RequestConfig): ApiResponse<boolean> {
+    return this.http.post('/api/board/screen/content', data, this.extendConfig(config))
+  }
+
 }
 
 /**
@@ -170,7 +198,7 @@ export class FileApiService extends BaseApiService {
   }> {
     const formData = new FormData()
     formData.append('file', file)
-    
+
     return this.http.post('/api/files/upload', formData, this.extendConfig({
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -185,8 +213,9 @@ export class FileApiService extends BaseApiService {
  */
 export const apiService = {
   user: new UserApiService(),
-  example: new ExampleApiService(),
-  file: new FileApiService()
+  // example: new ExampleApiService(),
+  // file: new FileApiService(),
+  board: new BoardApiService()
 }
 
 /**
@@ -194,7 +223,7 @@ export const apiService = {
  */
 export function createApiService(config?: RequestConfig) {
   const customHttp = new HttpClient(config)
-  
+
   return {
     user: new UserApiService(),
     example: new ExampleApiService(),

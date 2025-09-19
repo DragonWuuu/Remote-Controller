@@ -1,12 +1,18 @@
 <script setup>
 import { ElButton } from 'element-plus'
+import BulbSwitch from '../component/BulbSwitch.vue'
+import ScreenDisplay from '../component/ScreenDisplay.vue'
 </script>
 
 <template>
     <div class="home-container">
         <h2>hello</h2>
         <div class="button-group">
+            <!-- 灯泡开关组件 -->
+            <BulbSwitch />
 
+            <!-- 屏幕显示组件 -->
+            <ScreenDisplay />
         </div>
     </div>
 </template>
