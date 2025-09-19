@@ -4,7 +4,7 @@
 GITHUB_REPO="https://github.com/DragonWuuu/Remote-Controller.git" # GitHub仓库地址
 IMAGE_NAME="remote-controller"
 CONTAINER_NAME="remote-controller-app"
-PORT=8080 # 宿主机端口
+PORT=8001 # 宿主机端口
 
 # 打印当前步骤
 function log_step() {
